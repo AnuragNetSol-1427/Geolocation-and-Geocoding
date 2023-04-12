@@ -58,15 +58,17 @@ const requestLocationPermission = async () => {
 
   return (
     <View style={styles.container}>
-      <Text>Welcome!</Text>
+      <Text style={styles.containerHeadingText}>Welcome!</Text>
       <View
-        style={{backgroundColor: 'skyblue', marginTop: 10, padding: 10, borderWidth: 1, borderRadius: 10, width: '40%'}}>
+        style={styles.getLocationButtonContainer}>
         <Pressable onPress={getLocation} style={styles.getLocationButton}>
             <Text>Get Location</Text>    
         </Pressable> 
       </View>
-      <Text>Latitude: {location ? location.coords.latitude : null} </Text>
-      <Text>Longitude: {location ? location.coords.longitude : null} </Text>
+      <View style={styles.latitudeAndLongitudeContainer}>
+        <Text>Latitude: {location ? location.coords.latitude : null} </Text>
+        <Text>Longitude: {location ? location.coords.longitude : null} </Text>
+      </View>
     </View>
   )
 }
@@ -76,10 +78,25 @@ export default GeoLocation
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        alignItems: 'center',
+    },
+    containerHeadingText: {
+      fontSize: 40,
+    },
+    getLocationButtonContainer: {
+      backgroundColor: 'skyblue', 
+      marginTop: 10, 
+      padding: 7, 
+      borderWidth: 1, 
+      // borderRadius: 10, 
+      width: '60%'
     },
     getLocationButton: {
         borderColor: 'black',
-        borderWidth: 1,
+        // borderWidth: 1,
         alignItems: 'center',
+    },
+    latitudeAndLongitudeContainer: {
+      marginTop: 20,
     },
 })
