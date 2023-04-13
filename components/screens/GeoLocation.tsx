@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { View, Text, Pressable, StyleSheet, PermissionsAndroid } from 'react-native'
 import Geolocation from 'react-native-geolocation-service';
+import Geocoder from 'react-native-geocoder';
 
 const GeoLocation = () => {
       // All the states are here
   const [location, setLocation] = useState(false);
+  const [address, setAddress] = useState(false);
 
     // Function to get permission for location
 const requestLocationPermission = async () => {
@@ -42,6 +44,7 @@ const requestLocationPermission = async () => {
           position => {
             console.log(position);
             setLocation(position);
+            
           },
           error => {
             // See error code charts below.
@@ -53,6 +56,27 @@ const requestLocationPermission = async () => {
       }
     });
     console.log(location);
+  };
+
+  const getAddress = () => {
+    const result = requestLocationPermission();
+    result.then(res => {
+      console.log('res is:', res);
+      if (res) {
+        // let NY = {
+        //   lat: 40.7809261,
+        //   lng: -73.9637594
+        // };
+        
+        // Geocoder.geocodePosition(NY).then(res => {
+        Geocoder.geocodePosition({lat: location.coords.latitude, lng: location.coords.longitude}).then(res => {
+          // res is an Array of geocoding object (see below)
+          console.log(res)
+          setAddress(res)
+      })
+      .catch(err => console.log(err))
+      }
+    });
   };
 
 
@@ -68,6 +92,15 @@ const requestLocationPermission = async () => {
       <View style={styles.latitudeAndLongitudeContainer}>
         <Text>Latitude: {location ? location.coords.latitude : null} </Text>
         <Text>Longitude: {location ? location.coords.longitude : null} </Text>
+      </View>
+      <View
+        style={styles.getLocationButtonContainer}>
+        <Pressable onPress={getAddress} style={styles.getLocationButton}>
+            <Text>Get Address</Text>    
+        </Pressable> 
+      </View>
+      <View style={styles.latitudeAndLongitudeContainer}>
+        <Text>adminArea: {address ? address[0].adminArea : null} </Text>
       </View>
     </View>
   )

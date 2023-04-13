@@ -8,13 +8,13 @@ const HorizontalList = () => {
           id: 1,
           title: "The Simpsons",
           year: 1989,
-        //   image: require("./simpson.jpg"), 
+          // image: require("./simpson.jpg"), 
         },
         {
           id: 2,
           title: "SpongeBob SquarePants ",
           year: 1999,
-        //   image: require("./spongebob.jpg"),
+          // image: require("./spongebob.jpg"),
         },
       ];
       
@@ -25,8 +25,10 @@ const HorizontalList = () => {
           <Image
             style={{ height: 300, width: 300}}
             source={item.image}
+            // source={{uri: item.image}}
             resizeMode="contain"
           />
+          
         </View>
       );
       return (
