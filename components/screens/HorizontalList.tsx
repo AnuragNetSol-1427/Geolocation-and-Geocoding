@@ -29,7 +29,7 @@ const HorizontalList = () => {
         },
       ];
       
-      const renderItem = ({ item, index }) => (
+      const renderItem = ({ item }) => (
         <View>
           <Text style={styles.title}>{item.title} </Text>
           {/* <Text> {item.year}</Text> */}
@@ -60,6 +60,7 @@ export default HorizontalList
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginBottom: 15,
         // backgroundColor: 'grey',
     },
     featuresHeading: {
