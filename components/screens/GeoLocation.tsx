@@ -82,7 +82,7 @@ const requestLocationPermission = async () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.containerHeadingText}>Welcome!</Text>
+      <Text style={styles.containerHeadingText}>Get location of gym near you!</Text>
       <View
         style={styles.getLocationButtonContainer}>
         <Pressable onPress={getLocation} style={styles.getLocationButton}>
@@ -114,15 +114,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     containerHeadingText: {
-      fontSize: 40,
+      fontSize: 17,
     },
     getLocationButtonContainer: {
       backgroundColor: 'skyblue', 
-      marginTop: 10, 
+      marginTop: 9, 
       padding: 7, 
       borderWidth: 1, 
       // borderRadius: 10, 
-      width: '60%'
+      width: '60%',
     },
     getLocationButton: {
         borderColor: 'black',
@@ -130,6 +130,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     latitudeAndLongitudeContainer: {
-      marginTop: 20,
+      marginHorizontal: 20,
+      marginVertical: 10,
+      flexDirection: 'row',
     },
 })

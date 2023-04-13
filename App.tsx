@@ -9,9 +9,9 @@ const App = () => {
     //   <Text>App</Text>
     // </View>
     <>
+    <SnapCarousel />
     <GeoLocation />
     <HorizontalList />
-    <SnapCarousel />
     </>
   )
 }
